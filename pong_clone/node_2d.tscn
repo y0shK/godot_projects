@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://b2aptm3rr5hxu"]
+
+[ext_resource type="Script" path="res://node_CharacterBody2D.gd" id="1_u7get"]
+[ext_resource type="Texture2D" uid="uid://dpt3bpmkeor71" path="res://icon.svg" id="1_w8bml"]
+[ext_resource type="Script" path="res://enemy_body.gd" id="3_05dow"]
+[ext_resource type="Texture2D" uid="uid://h30bd1foq413" path="res://enemy.PNG" id="3_gfrb6"]
+[ext_resource type="Texture2D" uid="uid://bd805b7uipnmj" path="res://chaos.PNG" id="4_3wdy2"]
+[ext_resource type="Script" path="res://Ball_2D_body.gd" id="4_87ot0"]
+[ext_resource type="Script" path="res://score_script.gd" id="7_jcy4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycqhx"]
+size = Vector2(52, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvccl"]
+size = Vector2(61.125, 52.875)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_27xtw"]
+radius = 26.6833
+
+[node name="Node" type="Node"]
+
+[node name="PlayerNode" type="Node2D" parent="."]
+
+[node name="P_body" type="Area2D" parent="PlayerNode"]
+script = ExtResource("1_u7get")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerNode/P_body"]
+position = Vector2(340, 129)
+scale = Vector2(0.46875, 0.492188)
+texture = ExtResource("1_w8bml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNode/P_body"]
+position = Vector2(341, 133)
+shape = SubResource("RectangleShape2D_ycqhx")
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" type="Area2D" parent="Enemy"]
+script = ExtResource("3_05dow")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy/CharacterBody2D"]
+position = Vector2(38, 131)
+scale = Vector2(0.282557, 0.25524)
+texture = ExtResource("3_gfrb6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/CharacterBody2D"]
+position = Vector2(35, 140)
+shape = SubResource("RectangleShape2D_xvccl")
+
+[node name="Ball" type="Node2D" parent="."]
+
+[node name="Ball_2D_body" type="Area2D" parent="Ball"]
+script = ExtResource("4_87ot0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball/Ball_2D_body"]
+position = Vector2(188, 133)
+scale = Vector2(0.152802, 0.122551)
+texture = ExtResource("4_3wdy2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/Ball_2D_body"]
+position = Vector2(183, 132)
+shape = SubResource("CircleShape2D_27xtw")
+
+[node name="Player_score" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("7_jcy4l")
+
+[connection signal="area_entered" from="PlayerNode/P_body" to="Ball/Ball_2D_body" method="_on_p_body_area_entered"]
+[connection signal="area_entered" from="Enemy/CharacterBody2D" to="Ball/Ball_2D_body" method="_on_character_body_2d_area_entered"]
+[connection signal="cpu_point_scored" from="Ball/Ball_2D_body" to="Player_score" method="_on_ball_2d_body_cpu_point_scored"]
+[connection signal="human_point_scored" from="Ball/Ball_2D_body" to="Player_score" method="_on_ball_2d_body_human_point_scored"]
+[connection signal="respawn_start" from="Ball/Ball_2D_body" to="Player_score" method="_on_ball_2d_body_respawn_start"]
