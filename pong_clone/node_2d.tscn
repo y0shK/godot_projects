@@ -12,7 +12,7 @@
 size = Vector2(52, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvccl"]
-size = Vector2(61.125, 64.4375)
+size = Vector2(95.5625, 116)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_27xtw"]
 radius = 26.6833
@@ -44,7 +44,7 @@ scale = Vector2(0.282557, 0.25524)
 texture = ExtResource("3_gfrb6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/CharacterBody2D"]
-position = Vector2(47, 305)
+position = Vector2(47, 306)
 shape = SubResource("RectangleShape2D_xvccl")
 
 [node name="Ball" type="Node2D" parent="."]

@@ -1,6 +1,7 @@
 extends Area2D
 
 var initial_pos = position
+var speed = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +16,6 @@ func _process(delta):
 
 func _on_ball_2d_body_move_enemy(ball_y):
 	if position.y < ball_y:
-		position.y += 30
+		position.y += speed
 	else:
-		position.y -= 30
+		position.y -= speed

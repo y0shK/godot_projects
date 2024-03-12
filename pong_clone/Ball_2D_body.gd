@@ -14,12 +14,15 @@ var direction = Vector2(rand_x, rand_y).normalized()
 #direction = direction.normalized()
 
 var initial_pos = position
+var initial_dir = direction
 
 var bounce_limit = 0
 var max_bounce = 5
 
 var human_points = 0
 var cpu_points = 0
+
+var pixel_threshold = 300
 
 signal human_point_scored
 signal cpu_point_scored
@@ -31,8 +34,10 @@ func _ready():
 	
 func _respawn():
 	
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
+	# on respawn, reset original position and direction vector
 	position = initial_pos
+	direction = initial_dir
 
 func _process(delta):
 	
@@ -43,7 +48,9 @@ func _process(delta):
 	position += speed * delta * direction
 	#velocity = speed
 	
-	if position.y < -1 * get_viewport_rect().size.y or position.y >= get_viewport_rect().size.y:
+	#if position.y < -1 * get_viewport_rect().size.y or position.y >= get_viewport_rect().size.y:
+	if position.y <= -1 * get_viewport().get_visible_rect().size.y + pixel_threshold or position.y >= get_viewport().get_visible_rect().size.y - pixel_threshold:
+	#if position.y <= pixel_threshold or position.y >= get_viewport().get_visible_rect().size.y - pixel_threshold:
 		direction.y = direction.y * -1
 		bounce_limit += 1
 		
@@ -83,7 +90,7 @@ func _process(delta):
 	
 	var enemy_x = get_node("../../Enemy/CharacterBody2D/CollisionShape2D").position.x
 	var enemy_y = get_node("../../Enemy/CharacterBody2D/CollisionShape2D").position.y
-	if abs(position.x - enemy_x) < 5 or abs(position.y - enemy_y) < 5: # and abs(position.y - enemy_y) < 10:
+	if abs(position.x - enemy_x) < 50 or abs(position.y - enemy_y) < 30: # and abs(position.y - enemy_y) < 10:
 		move_enemy.emit(position.y)
 	
 
