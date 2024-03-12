@@ -1,6 +1,6 @@
 extends Area2D
 
-const DEFAULT_SPEED = 200
+const DEFAULT_SPEED = 300
 
 var speed = DEFAULT_SPEED
 
@@ -24,6 +24,7 @@ var cpu_points = 0
 signal human_point_scored
 signal cpu_point_scored
 signal respawn_start
+signal move_enemy
 
 func _ready():
 	randomize()
@@ -31,8 +32,13 @@ func _ready():
 func _respawn():
 	
 	get_tree().reload_current_scene()
+	position = initial_pos
 
 func _process(delta):
+	
+	if Input.is_action_pressed("end"):
+		_respawn()
+	
 	speed += delta * 2
 	position += speed * delta * direction
 	#velocity = speed
@@ -49,7 +55,7 @@ func _process(delta):
 			await get_tree().create_timer(2.0).timeout
 			print("off bounds")
 			print(position)
-			queue_free()
+			#queue_free()
 			_respawn() # when out of bounds, reset the stage and play again
 		elif position.x > get_viewport_rect().size.x:
 			cpu_points += 1
@@ -57,7 +63,7 @@ func _process(delta):
 			#await get_tree().create_timer(2.0).timeout
 			print("off bounds")
 			print(position)
-			queue_free()
+			#queue_free()
 			_respawn() # when out of bounds, reset the stage and play again
 		#direction.x = direction.x * -1
 		#bounce_limit += 1
@@ -70,6 +76,15 @@ func _process(delta):
 	
 	#print("viewport")
 	#print(get_viewport_rect().size.x)
+	
+	# this is how to get position of sibling node
+	#if abs(position.x - get_node("../../Enemy/CharacterBody2D/CollisionShape2D").position.x) < 10 and abs(position.y - get_node("../../Enemy/CharacterBody2D/CollisionShape2D").position.y) < 10:
+	#	print("pos close")
+	
+	var enemy_x = get_node("../../Enemy/CharacterBody2D/CollisionShape2D").position.x
+	var enemy_y = get_node("../../Enemy/CharacterBody2D/CollisionShape2D").position.y
+	if abs(position.x - enemy_x) < 5 or abs(position.y - enemy_y) < 5: # and abs(position.y - enemy_y) < 10:
+		move_enemy.emit(position.y)
 	
 
 func reset():

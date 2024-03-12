@@ -19,7 +19,7 @@ func _on_ball_2d_body_human_point_scored():
 	var playerstr = "player points " + str(playerpts)
 	#set_text("player scores")
 	set_text(playerstr)
-	await get_tree().create_timer(2.0).timeout
+	#await get_tree().create_timer(2.0).timeout
 	_on_ball_2d_body_respawn_start()
 
 func _on_ball_2d_body_cpu_point_scored():
@@ -27,7 +27,7 @@ func _on_ball_2d_body_cpu_point_scored():
 	var cpustr = "cpu " + str(cpu_pts)
 	#set_text("cpu scores")
 	set_text(cpustr)
-	await get_tree().create_timer(2.0).timeout
+	#await get_tree().create_timer(2.0).timeout
 	_on_ball_2d_body_respawn_start()
 
 
