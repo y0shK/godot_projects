@@ -92,3 +92,5 @@ script = ExtResource("9_cmlbq")
 [connection signal="human_point_scored" from="Ball/Ball_2D_body" to="player_score_label" method="_on_ball_2d_body_human_point_scored"]
 [connection signal="move_enemy" from="Ball/Ball_2D_body" to="Enemy/CharacterBody2D" method="_on_ball_2d_body_move_enemy"]
 [connection signal="respawn_start" from="Ball/Ball_2D_body" to="new_game_notice" method="_on_ball_2d_body_respawn_start"]
+[connection signal="reset_points" from="new_game_notice" to="player_score_label" method="_on_new_game_notice_reset_points"]
+[connection signal="reset_points" from="new_game_notice" to="enemy_score_label" method="_on_new_game_notice_reset_points"]

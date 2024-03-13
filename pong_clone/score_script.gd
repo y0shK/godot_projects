@@ -2,6 +2,9 @@
 extends Label
 var playerpts = 0
 var cpu_pts = 0
+
+signal reset_points
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -38,6 +41,9 @@ func _on_ball_2d_body_cpu_point_scored():
 func _on_ball_2d_body_respawn_start():
 	horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	set_text("starting new game!")
+	
+	reset_points.emit()
+	
 	await get_tree().create_timer(2.0).timeout
 	set_text("") # get rid of label beyond a certain number of seconds
 	
