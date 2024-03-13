@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhiootg1iuw0b"]
+
+[ext_resource type="Script" path="res://Barry.gd" id="1_xw23j"]
+[ext_resource type="Texture2D" uid="uid://c11xjw7w3do0i" path="res://barry.PNG" id="2_23iby"]
+[ext_resource type="Texture2D" uid="uid://btbf6fdyrx2us" path="res://floor_tile.PNG" id="3_flscg"]
+[ext_resource type="Script" path="res://floor_body.gd" id="3_ut8ef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vktf"]
+size = Vector2(116, 101.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ml7kx"]
+size = Vector2(1143.5, 41)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Barry" type="CharacterBody2D" parent="."]
+script = ExtResource("1_xw23j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barry"]
+position = Vector2(79, 539)
+shape = SubResource("RectangleShape2D_1vktf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Barry"]
+position = Vector2(84, 540)
+scale = Vector2(0.417379, 0.355346)
+texture = ExtResource("2_23iby")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+script = ExtResource("3_ut8ef")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(571.25, 615)
+shape = SubResource("RectangleShape2D_ml7kx")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(570.25, 617)
+scale = Vector2(2.98042, 1)
+texture = ExtResource("3_flscg")
+
+[connection signal="player_on_floor" from="StaticBody2D" to="Barry" method="_on_static_body_2d_player_on_floor"]
