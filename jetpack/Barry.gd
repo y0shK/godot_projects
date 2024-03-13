@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var gravity = 100
+var gravity = 75
 var move_dir = Vector2(0,-1)
 var speed = 250
 var on_ground = false
@@ -10,6 +10,7 @@ var pixel_threshold = 450
 # https://docs.godotengine.org/en/stable/tutorials/physics/using_character_body_2d.html
 # https://forum.godotengine.org/t/how-make-my-character-fall-gravity-in-kinematic-body-3d/17017/2
 # https://www.reddit.com/r/godot/comments/15zg3b8/i_think_the_gravity_in_characterbody2d_default/
+# https://www.reddit.com/r/godot/comments/13ntabo/hello_im_trying_to_make_a_simple_endless_runner/
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

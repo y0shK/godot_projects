@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhiootg1iuw0b"]
+[gd_scene load_steps=13 format=3 uid="uid://dhiootg1iuw0b"]
 
 [ext_resource type="Script" path="res://Barry.gd" id="1_xw23j"]
 [ext_resource type="Texture2D" uid="uid://c11xjw7w3do0i" path="res://barry.PNG" id="2_23iby"]
@@ -7,12 +7,17 @@
 [ext_resource type="Script" path="res://ParallaxBackgroundScroll.gd" id="5_3dor6"]
 [ext_resource type="Texture2D" uid="uid://bfdxpghl7dr5k" path="res://jetpack_bg.PNG" id="5_7wxxo"]
 [ext_resource type="Script" path="res://MovingBackground.gd" id="6_gcqdk"]
+[ext_resource type="Script" path="res://ganon_obj.gd" id="8_heakc"]
+[ext_resource type="Texture2D" uid="uid://bjy81ibj141p5" path="res://ganondorf_obstacle.PNG" id="8_sdcps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vktf"]
-size = Vector2(116, 101.5)
+size = Vector2(97, 80.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ml7kx"]
 size = Vector2(1143.5, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxldt"]
+size = Vector2(39.125, 34.75)
 
 [node name="Node2D" type="Node2D"]
 
@@ -20,7 +25,7 @@ size = Vector2(1143.5, 41)
 script = ExtResource("1_xw23j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barry"]
-position = Vector2(79, 539)
+position = Vector2(88.5, 549.375)
 shape = SubResource("RectangleShape2D_1vktf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barry"]
@@ -52,5 +57,17 @@ position = Vector2(576.25, 323)
 scale = Vector2(2.57416, 1.87647)
 texture = ExtResource("5_7wxxo")
 script = ExtResource("6_gcqdk")
+
+[node name="enemy_ganon" type="CharacterBody2D" parent="."]
+script = ExtResource("8_heakc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_ganon"]
+position = Vector2(543, 559)
+shape = SubResource("RectangleShape2D_qxldt")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy_ganon"]
+position = Vector2(546, 554)
+scale = Vector2(0.273381, 0.297727)
+texture = ExtResource("8_sdcps")
 
 [connection signal="player_on_floor" from="StaticBody2D" to="Barry" method="_on_static_body_2d_player_on_floor"]
