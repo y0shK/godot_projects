@@ -3,11 +3,17 @@ GDD
 1. player
 	hold space, Dave gets propelled up
 	(otherwise, he falls)
-	otherwise, autoruns
+
+	[x] basic physics
+	[ ] jetpack hover TBD
+
+	[x] otherwise, autoruns
 	(use GMTK suggestion of having scene scroll and player stationary)
 
 2. scene
 	autoscroll to the left
+
+	[x] parallax background
 
 3. random obstacles
 	need to jump - if don't, collision on ground -> death
@@ -20,3 +26,7 @@ GDD
 
 5. score
 	score gets added per second (just survive) like Temple Run
+
+6. jetpack
+	once basic platformer is created, work on jetpack logic
+	(if spacebar is held, "hover" instead of falling like Mario)
