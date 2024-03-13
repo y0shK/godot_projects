@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2aptm3rr5hxu"]
+[gd_scene load_steps=13 format=3 uid="uid://b2aptm3rr5hxu"]
 
 [ext_resource type="Script" path="res://node_CharacterBody2D.gd" id="1_u7get"]
 [ext_resource type="Texture2D" uid="uid://dpt3bpmkeor71" path="res://icon.svg" id="1_w8bml"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bd805b7uipnmj" path="res://chaos.PNG" id="4_3wdy2"]
 [ext_resource type="Script" path="res://Ball_2D_body.gd" id="4_87ot0"]
 [ext_resource type="Script" path="res://score_script.gd" id="7_jcy4l"]
+[ext_resource type="Script" path="res://player_score_label.gd" id="8_fxxka"]
+[ext_resource type="Script" path="res://enemy_score_label.gd" id="9_cmlbq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycqhx"]
 size = Vector2(52, 66)
@@ -61,14 +63,32 @@ texture = ExtResource("4_3wdy2")
 position = Vector2(380, 302)
 shape = SubResource("CircleShape2D_27xtw")
 
-[node name="Player_score" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="new_game_notice" type="Label" parent="."]
+offset_left = 357.0
+offset_top = 118.0
+offset_right = 397.0
+offset_bottom = 141.0
 script = ExtResource("7_jcy4l")
+
+[node name="player_score_label" type="Label" parent="."]
+offset_left = 689.0
+offset_top = 91.0
+offset_right = 751.0
+offset_bottom = 114.0
+script = ExtResource("8_fxxka")
+
+[node name="enemy_score_label" type="Label" parent="."]
+offset_left = 23.0
+offset_top = 91.0
+offset_right = 63.0
+offset_bottom = 114.0
+script = ExtResource("9_cmlbq")
 
 [connection signal="area_entered" from="PlayerNode/P_body" to="Ball/Ball_2D_body" method="_on_p_body_area_entered"]
 [connection signal="area_entered" from="Enemy/CharacterBody2D" to="Ball/Ball_2D_body" method="_on_character_body_2d_area_entered"]
-[connection signal="cpu_point_scored" from="Ball/Ball_2D_body" to="Player_score" method="_on_ball_2d_body_cpu_point_scored"]
-[connection signal="human_point_scored" from="Ball/Ball_2D_body" to="Player_score" method="_on_ball_2d_body_human_point_scored"]
+[connection signal="cpu_point_scored" from="Ball/Ball_2D_body" to="new_game_notice" method="_on_ball_2d_body_cpu_point_scored"]
+[connection signal="cpu_point_scored" from="Ball/Ball_2D_body" to="enemy_score_label" method="_on_ball_2d_body_cpu_point_scored"]
+[connection signal="human_point_scored" from="Ball/Ball_2D_body" to="new_game_notice" method="_on_ball_2d_body_human_point_scored"]
+[connection signal="human_point_scored" from="Ball/Ball_2D_body" to="player_score_label" method="_on_ball_2d_body_human_point_scored"]
 [connection signal="move_enemy" from="Ball/Ball_2D_body" to="Enemy/CharacterBody2D" method="_on_ball_2d_body_move_enemy"]
-[connection signal="respawn_start" from="Ball/Ball_2D_body" to="Player_score" method="_on_ball_2d_body_respawn_start"]
+[connection signal="respawn_start" from="Ball/Ball_2D_body" to="new_game_notice" method="_on_ball_2d_body_respawn_start"]

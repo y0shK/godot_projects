@@ -42,6 +42,7 @@ func _respawn():
 func _process(delta):
 	
 	if Input.is_action_pressed("end"):
+		respawn_start.emit()
 		_respawn()
 	
 	speed += delta * 2
@@ -57,15 +58,16 @@ func _process(delta):
 	elif position.x < -1 * get_viewport_rect().size.x or position.x >= get_viewport_rect().size.x:
 		
 		if position.x < -1 * get_viewport_rect().size.x:
-			human_points += 1
+			#human_points += 1
 			human_point_scored.emit()
-			await get_tree().create_timer(2.0).timeout
+			
+			#await get_tree().create_timer(2.0).timeout
 			print("off bounds")
 			print(position)
 			#queue_free()
 			_respawn() # when out of bounds, reset the stage and play again
 		elif position.x > get_viewport_rect().size.x:
-			cpu_points += 1
+			#cpu_points += 1
 			cpu_point_scored.emit()
 			#await get_tree().create_timer(2.0).timeout
 			print("off bounds")
