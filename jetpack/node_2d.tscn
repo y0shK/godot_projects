@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://dhiootg1iuw0b"]
+[gd_scene load_steps=12 format=3 uid="uid://dhiootg1iuw0b"]
 
+[ext_resource type="Script" path="res://node_2d_root.gd" id="1_r1fna"]
 [ext_resource type="Script" path="res://Barry.gd" id="1_xw23j"]
 [ext_resource type="Texture2D" uid="uid://c11xjw7w3do0i" path="res://barry.PNG" id="2_23iby"]
 [ext_resource type="Texture2D" uid="uid://btbf6fdyrx2us" path="res://floor_tile.PNG" id="3_flscg"]
@@ -7,8 +8,7 @@
 [ext_resource type="Script" path="res://ParallaxBackgroundScroll.gd" id="5_3dor6"]
 [ext_resource type="Texture2D" uid="uid://bfdxpghl7dr5k" path="res://jetpack_bg.PNG" id="5_7wxxo"]
 [ext_resource type="Script" path="res://MovingBackground.gd" id="6_gcqdk"]
-[ext_resource type="Script" path="res://ganon_obj.gd" id="8_heakc"]
-[ext_resource type="Texture2D" uid="uid://bjy81ibj141p5" path="res://ganondorf_obstacle.PNG" id="8_sdcps"]
+[ext_resource type="Script" path="res://Enemy_node.gd" id="8_rik6v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vktf"]
 size = Vector2(97, 80.75)
@@ -16,10 +16,8 @@ size = Vector2(97, 80.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ml7kx"]
 size = Vector2(1143.5, 41)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxldt"]
-size = Vector2(39.125, 34.75)
-
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_r1fna")
 
 [node name="Barry" type="CharacterBody2D" parent="."]
 script = ExtResource("1_xw23j")
@@ -58,16 +56,7 @@ scale = Vector2(2.57416, 1.87647)
 texture = ExtResource("5_7wxxo")
 script = ExtResource("6_gcqdk")
 
-[node name="enemy_ganon" type="CharacterBody2D" parent="."]
-script = ExtResource("8_heakc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_ganon"]
-position = Vector2(543, 559)
-shape = SubResource("RectangleShape2D_qxldt")
-
-[node name="Sprite2D" type="Sprite2D" parent="enemy_ganon"]
-position = Vector2(546, 554)
-scale = Vector2(0.273381, 0.297727)
-texture = ExtResource("8_sdcps")
+[node name="Enemy_node" type="CharacterBody2D" parent="."]
+script = ExtResource("8_rik6v")
 
 [connection signal="player_on_floor" from="StaticBody2D" to="Barry" method="_on_static_body_2d_player_on_floor"]
