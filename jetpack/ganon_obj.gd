@@ -23,15 +23,15 @@ func _ready():
 func _spawn_enemy(delta, frame_timer, curr_enemies, max_enemies):
 	
 	if frame_timer > 400 and curr_enemies < max_enemies: 
-		print("frame timer >")
+		#print("frame timer >")
 		var new_enemy = Ganon.new()
-		print(new_enemy)
+		#print(new_enemy)
 		curr_enemies += 1
 		#new_enemy.position = initial_pos
 		#new_enemy
 		var my_root = get_tree().get_root().get_node("Node2D")
 		
-		print(curr_enemies)
+		#print(curr_enemies)
 		my_root.add_child(new_enemy)
 		new_enemy.set_owner(my_root)
 	

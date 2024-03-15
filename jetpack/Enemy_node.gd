@@ -21,15 +21,33 @@ func _process(delta):
 
 
 var scene = preload("res://Enemy.tscn")
-var create_child = 0
+var create_child_count = 0
 #var my_root = get_tree().get_root().get_node(".")
+
+var x_arr = []
+#var y_arr = []
 
 func _physics_process(delta):
 	
-	if create_child < 3:
-		var instance = scene.instantiate()
+	if create_child_count < 5: # put N enemies on screen
+		var ground_enemy = scene.instantiate()
 		#instance.set_owner(get_tree().root)
 		#get_tree().root.add_child(instance)
-		add_child(instance)
-		instance.global_position = position
-		create_child += 1
+		add_child(ground_enemy)
+		
+		# set X and y values for position vector
+		var y = get_node("../StaticBody2D").position.y
+		var max_x = get_viewport().get_visible_rect().size.x
+		var x = randi() % int(max_x)
+		
+		x_arr.append(x)
+		#y_arr.append(y)
+		# randi() % 
+		
+		# don't make the enemies too close to one another
+		# if they are, move them back to give player more space
+		if x_arr.size() >= 2 and abs(x_arr[-1] - x_arr[-2]) < 100:
+			ground_enemy.global_position = Vector2(x + 100, y)
+		else:
+			ground_enemy.global_position = Vector2(x, y)
+		create_child_count += 1

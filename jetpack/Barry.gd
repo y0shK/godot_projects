@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-var gravity = 75
+# play with gravity/speed values to simulate Jetpack Joyride-like physics
+var gravity = 35
 var move_dir = Vector2(0,-1)
-var speed = 250
+var speed = 110
 var on_ground = false
 var pixel_threshold = 450
 
