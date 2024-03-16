@@ -14,4 +14,3 @@ func _process(delta):
 	var barry_y = get_node("../Barry").position.y
 	if abs(barry_y - floor_y) < 10:
 		player_on_floor.emit()
-

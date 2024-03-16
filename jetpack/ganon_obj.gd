@@ -48,7 +48,7 @@ func _physics_process(delta):
 	velocity.x = -MOVE_SPEED
 	move_and_slide()
 		
-	frame_timer += 1
+	#frame_timer += 1
 	#print(frame_timer)
 	
-	var new_enemy = _spawn_enemy(delta, frame_timer, curr_enemies, 5)
+	#var new_enemy = _spawn_enemy(delta, frame_timer, curr_enemies, 5)

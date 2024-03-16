@@ -7,6 +7,8 @@ var speed = 110
 var on_ground = false
 var pixel_threshold = 450
 
+#signal hit_by_enemy
+
 # used
 # https://docs.godotengine.org/en/stable/tutorials/physics/using_character_body_2d.html
 # https://forum.godotengine.org/t/how-make-my-character-fall-gravity-in-kinematic-body-3d/17017/2
@@ -44,3 +46,7 @@ func _physics_process(delta):
 func _on_static_body_2d_player_on_floor():
 	on_ground = true
 	#print(on_ground)
+
+
+func _on_enemy_node_area_entered(area):
+	print("area entered")

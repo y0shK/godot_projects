@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhiootg1iuw0b"]
+[gd_scene load_steps=13 format=3 uid="uid://dhiootg1iuw0b"]
 
 [ext_resource type="Script" path="res://node_2d_root.gd" id="1_r1fna"]
 [ext_resource type="Script" path="res://Barry.gd" id="1_xw23j"]
@@ -16,20 +16,23 @@ size = Vector2(97, 80.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ml7kx"]
 size = Vector2(1143.5, 41)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj1bh"]
+size = Vector2(134, 71.5)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_r1fna")
 
 [node name="Barry" type="CharacterBody2D" parent="."]
 script = ExtResource("1_xw23j")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Barry"]
-position = Vector2(88.5, 549.375)
-shape = SubResource("RectangleShape2D_1vktf")
-
 [node name="Sprite2D" type="Sprite2D" parent="Barry"]
 position = Vector2(84, 540)
 scale = Vector2(0.417379, 0.355346)
 texture = ExtResource("2_23iby")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barry"]
+position = Vector2(88.5, 549.375)
+shape = SubResource("RectangleShape2D_1vktf")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 script = ExtResource("3_ut8ef")
@@ -56,7 +59,12 @@ scale = Vector2(2.57416, 1.87647)
 texture = ExtResource("5_7wxxo")
 script = ExtResource("6_gcqdk")
 
-[node name="Enemy_node" type="CharacterBody2D" parent="."]
+[node name="Enemy_node" type="Area2D" parent="."]
 script = ExtResource("8_rik6v")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_node"]
+position = Vector2(83, 553)
+shape = SubResource("RectangleShape2D_fj1bh")
+
 [connection signal="player_on_floor" from="StaticBody2D" to="Barry" method="_on_static_body_2d_player_on_floor"]
+[connection signal="area_entered" from="Enemy_node" to="Barry" method="_on_enemy_node_area_entered"]
