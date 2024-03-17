@@ -17,9 +17,9 @@ size = Vector2(97, 80.75)
 size = Vector2(1143.5, 41)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj1bh"]
-size = Vector2(134, 71.5)
+size = Vector2(146, 125.75)
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node"]
 script = ExtResource("1_r1fna")
 
 [node name="Barry" type="CharacterBody2D" parent="."]
@@ -63,8 +63,9 @@ script = ExtResource("6_gcqdk")
 script = ExtResource("8_rik6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_node"]
-position = Vector2(83, 553)
+position = Vector2(89, 525.875)
 shape = SubResource("RectangleShape2D_fj1bh")
 
+[connection signal="end_game" from="Barry" to="." method="_on_barry_end_game"]
 [connection signal="player_on_floor" from="StaticBody2D" to="Barry" method="_on_static_body_2d_player_on_floor"]
 [connection signal="area_entered" from="Enemy_node" to="Barry" method="_on_enemy_node_area_entered"]

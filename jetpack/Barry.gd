@@ -7,6 +7,8 @@ var speed = 110
 var on_ground = false
 var pixel_threshold = 450
 
+signal end_game
+
 #signal hit_by_enemy
 
 # used
@@ -50,3 +52,9 @@ func _on_static_body_2d_player_on_floor():
 
 func _on_enemy_node_area_entered(area):
 	print("area entered")
+	end_game.emit()
+	
+	# go to separate game over screen
+
+#func _game_over_scene():
+	

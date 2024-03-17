@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtlyit7kqbmfq"]
+
+[ext_resource type="Texture2D" uid="uid://crnal4vxcgpfp" path="res://game_over.PNG" id="1_8skhs"]
+[ext_resource type="Script" path="res://on_game_over.gd" id="2_4jswe"]
+[ext_resource type="Script" path="res://label_score.gd" id="3_sui3m"]
+
+[node name="Node" type="CanvasLayer"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+z_index = -5
+position = Vector2(570, 311.25)
+scale = Vector2(3.10326, 2.3231)
+texture = ExtResource("1_8skhs")
+script = ExtResource("2_4jswe")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+z_index = 3
+anchors_preset = -1
+anchor_left = 0.331
+anchor_top = 0.376
+anchor_right = 0.331
+anchor_bottom = 0.376
+offset_left = 151.188
+offset_top = 68.852
+offset_right = 238.188
+offset_bottom = 91.852
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over. Score:
+"
+script = ExtResource("3_sui3m")

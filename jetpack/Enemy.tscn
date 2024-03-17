@@ -5,16 +5,16 @@
 [ext_resource type="Script" path="res://Area2D_collision.gd" id="3_arvyl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0a1p"]
-size = Vector2(166, 94.375)
+size = Vector2(95.5, 68.5938)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qeluo"]
-size = Vector2(120, 116)
+size = Vector2(120.75, 114.75)
 
 [node name="enemy_ganon" type="CharacterBody2D"]
 script = ExtResource("1_4sttp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(545, 560)
+[node name="Ganon_boundary" type="CollisionShape2D" parent="."]
+position = Vector2(550, 559)
 shape = SubResource("RectangleShape2D_p0a1p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,6 +25,6 @@ texture = ExtResource("2_5cwpm")
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("3_arvyl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(542, 564)
+[node name="Ganon_detectbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(544, 548)
 shape = SubResource("RectangleShape2D_qeluo")

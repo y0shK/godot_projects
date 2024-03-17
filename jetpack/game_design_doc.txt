@@ -16,13 +16,15 @@ GDD
 	[x] parallax background
 
 3. random obstacles
-	[] need to jump - if don't, collision on ground -> death
-	[] need to not jump - if jump, collision -> death
+	[x] need to jump - if don't, collision on ground -> death
+	[x] need to not jump - if jump, collision -> death
 
 		[ ] if collision:
 			player dies
 			go to game over screen
 			try again? reset to main screen
+
+		[ ] add invisible wall to left so player doesn't exit screen
 
 4. powerups (like Temple Run modifiers)	
 	high score adder (+ 1000 to score)
