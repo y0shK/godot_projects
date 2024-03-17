@@ -4,7 +4,7 @@ signal start_game
 
 var score = 0
 var start_scene = preload("res://node_2d.tscn").instantiate()
-var game_started = false
+var game_ongoing = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,9 +14,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if game_started:
+	if game_ongoing:
 		score += 1
 		update_score(score)
+	else:
+		$ScoreLabel.hide()
 
 func show_message(text):
 	$Message.text = text
@@ -41,6 +43,13 @@ func _on_start_button_pressed():
 	print("start!")
 	$StartButton.hide()
 	$MessageLabel.hide()
+	game_ongoing = true
 	start_game.emit()
 	get_tree().root.add_child(start_scene)
-	game_started = true
+	#game_ongoing = true
+
+
+func _on_barry_end_game():
+	game_ongoing = false
+	$ScoreLabel.hide()
+	#show_game_over()
