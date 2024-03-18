@@ -1,0 +1,8 @@
+In my Jetpack Joyride-like, I learned the following:
+
+[x] how to set up scenes to organize my code (like classes in OOP)
+	[x] how to encapsulate different scene trees for certain purposes like ui, setup, cleanup, etc.
+
+[x] how to use singletons as "global" gdscripts (these are useful for global-like variables for health, score, stats, etc.)
+
+[x] how to use groups (e.g., enemy spawner class going into an "enemies" group so that I can instantiate an enemy from a scene N times, add it to the group, and remove from the group as necessary. This is needed for programmatic NPC generation)

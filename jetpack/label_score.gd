@@ -1,5 +1,7 @@
 extends Label
 
+# https://www.reddit.com/r/godot/comments/gprfoa/printing_variables_in_label_text/
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -5,7 +5,7 @@ GDD
 	(otherwise, he falls)
 
 	[x] basic physics
-	[ ] jetpack hover TBD
+	[ ] jetpack hover TBD - flavor (not necessary)
 
 	[x] otherwise, autoruns
 	(use GMTK suggestion of having scene scroll and player stationary)
@@ -19,21 +19,23 @@ GDD
 	[x] need to jump - if don't, collision on ground -> death
 	[x] need to not jump - if jump, collision -> death
 
-		[ ] if collision:
+		[x] if collision:
 			player dies
 			go to game over screen
 			try again? reset to main screen
 
-		[ ] add invisible wall to left so player doesn't exit screen
+		[x] add invisible wall to left so player doesn't exit screen
 
+flavor (not necessary)
 4. powerups (like Temple Run modifiers)	
 	high score adder (+ 1000 to score)
 	double coins
 	invincibility for 10s
 
 5. score
-	score gets added per second (just survive) like Temple Run
+	[x] score gets added per second (just survive) like Temple Run
 
+flavor (not necessary)
 6. jetpack
 	once basic platformer is created, work on jetpack logic
 	(if spacebar is held, "hover" instead of falling like Mario)
