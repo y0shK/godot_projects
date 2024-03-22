@@ -1,0 +1,13 @@
+Pacman goals
+
+0. implement ideas learned from jetpack 2d runner game
+
+	well-sculpted SceneTree
+	use the OOP paradigm (lots of scenes - like Java classes - & instantiation)
+	use globals for relevant variables (score, possibly health??)
+
+1. learn top-down game with restricted arena movement (just one tilemap)
+	emphasis on how to literally create one such screen
+	useful for roguelikes, 2D action games, etc. (top down tilemap style)
+
+2. code basic AI enemy (ghosts, each with a specific heuristic)

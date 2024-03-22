@@ -1,0 +1,56 @@
+GDD
+
+0. emphasize previous lessons learned from jetpack 2d runner
+	[] cleaned up SceneTree
+	[] follow OOP paradigm (scenes as classes, instantiate objects)
+	[] use groups when necessary
+	[] use globals for score
+
+1. tilemap that the game takes place on
+
+	[] one single tilemap (like a Fire Emblem board or chessboard)
+	
+	[] top and bottom collisions - there are clear walls
+	[] left and right have paths "wrap around" as in the original game
+	(i.e., if left wall is position x=0, 
+	then x=-1 "wraps around" to x=rightmost x position)
+		[] however, there still exist walls on LHS and RHS
+			(just not the entirety of the boundary)
+
+	[] internal walls for tilemap
+	(there exists a structure inside, can't roam wherever)
+	[] for example, 
+	"shapes" inside create paths to follow, dead ends, etc.
+
+2. pacman - player avatar
+
+	[] sprite that is believably "inside" the tilemap
+		(we want to create a top-down feel)
+	[] collision with walls and structures (can't go through them)
+	[] can move up, down, left, right, but NOT diagonally like 8 directions
+
+3. score systems
+
+	[] little pellets to increment score - score += some N each time
+	[] "fruit" somewhere as a one-time big N score increase	
+	[] game over - WIN - all pellets collected
+
+4. enemy AI systems
+
+	[] ghosts that chase after player, each with different heuristic
+		[] Consider just 3 for simplicity.
+		[] one beelines the player
+		[] one follows a clear-cut, distinct pattern
+			(independent of player movement)
+		[] one is random (drunkard's walk?)
+	[] when ghost collides with player, game over - LOSE
+
+	[] big circular pellets to provide "invincibility"
+		[] when eaten, toggle invincible mode. 
+		[] contact with ghost while invincible
+		 means removing it from game
+
+
+
+
+
