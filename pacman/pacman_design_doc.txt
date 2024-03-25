@@ -26,6 +26,7 @@ GDD
 
 	[] sprite that is believably "inside" the tilemap
 		(we want to create a top-down feel)
+	[] 4-way movement (just turns according to direction)
 	[] collision with walls and structures (can't go through them)
 	[] can move up, down, left, right, but NOT diagonally like 8 directions
 
