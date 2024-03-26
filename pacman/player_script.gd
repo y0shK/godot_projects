@@ -5,15 +5,28 @@ const JUMP_VELOCITY = -400.0
 
 # my variables
 @onready var _animation_player = $Sprite2D/AnimationPlayer
+@onready var _sprite2d = $Sprite2D
 var move_speed = 60
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _process(delta):
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed("ui_down"):
 		_animation_player.play("player_walk")
 		position.y += delta * move_speed
+		# 8, 6
+	elif Input.is_action_pressed("ui_right"):
+		_animation_player.play("walk_right")
+		_sprite2d.set_flip_h(false)
+		position.x += delta * move_speed
+	elif Input.is_action_pressed("ui_left"):
+		_sprite2d.set_flip_h(true)
+		_animation_player.play("walk_right")
+		position.x -= delta * move_speed
+	elif Input.is_action_pressed("ui_up"):
+		_animation_player.play("walk_up")
+		position.y -= delta * move_speed
 	else:
 		_animation_player.stop()
 
